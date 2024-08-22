@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <title>TANSAM - CoE</title>
+    <link rel="icon" type="image/png" href="/static/images/logo.png"/>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"/>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <!-- AOS Animation -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- AOS Animation END-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   </head>
+   <style>
+
+    
+    <!-- NEWS  SECTION -->
+    .news-container1 {
+      width: 300px;
+      height: 200px;
+      overflow: hidden;
+      border: 1px solid #ccc;
+      position: relative;
+  }
+  .news-item1 {
+      position: absolute;
+      width: 100%;
+      left: 0;
+      top: 100%;
+      padding: 10px;
+      background-color: #f0f0f0;
+      transition: top 0.5s ease-in-out;
+  }
+    <!-- News Section END-->
+
+
+
+    .login-form{
+    position: fixed;
+    top: -105%;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 1000;
+    background: rgba(255,255,255,.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.login-form.active{
+    opacity: 1;
+    top: 0;
+    transition: all .5s ease;
+}
+.login-form form{
+    padding: 2rem;
+    margin: 2rem;
+    border-radius: .5rem;
+    box-shadow: var(--box-shadow);
+    background: #fff;
+    border: var(--border);
+    text-align: center;
+    width: 30rem; 
+}
+.login-form form input{
+    width: 100%;
+    padding: 1rem;
+    margin: 1rem 0;
+    border-radius: .5rem;
+    border: var(--border);
+    outline: none;
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: var(--text-color);
+}
+.login-form form h3{
+    font-size: 1.5rem;
+    font-weight: 800;
+}
+
+#close-login-form{
+    position: absolute;
+    top: 1.5rem;
+    right: 2.5rem;
+    font-size: 3rem;
+    color: var(--text-color);
+    cursor: pointer;
+}
+button{
+  cursor: pointer;
+
+}
+.forgot{
+    position: fixed;
+    top: -105%;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 1000;
+    background: rgba(255,255,255,.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+}
+.forgot.active{
+    opacity: 1;
+    top: 0;
+    transition: all .5s ease;
+}
+.forgot form{
+    padding: 2rem;
+    margin: 2rem;
+    border-radius: .5rem;
+    box-shadow: var(--box-shadow);
+    background: #fff;
+    border: var(--border);
+    text-align: center;
+    width: 30rem;
+}
+.forgot form input{
+    width: 100%;
+    padding: 1rem;
+    margin: 1rem 0;
+    border-radius: .5rem;
+    border: var(--border);
+    outline: none;
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: var(--text-color);
+}
+.forgot form h3{
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--text-color);
+}
+#forgot{
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    text-align: center;
+    justify-content: center;
+    cursor: pointer;
+    width: 10rem;
+    color: var(--text-color);
+    font-weight: 700;
+}
+   </style>
+<body>
+<div class="forgot">
+        <span class="fas fa-times" id="close-otp-form"></span>
+        <form action="">
+            <h3>OTP sent to registered email id</h3>
+            <input type="number" placeholder="OTP" class="box">
+            <input type="password" placeholder="New Password" class="box">
+            <input type="password" placeholder="Confirm Password" class="box">
+            <button type="submit" class="btn">Reset Password</button>
+        </form>
+</div>
+  <div class="sticky-social">
+    <ul class="social">
+      <li class="fb"><a href="#"><i class="fa-brands fa-facebook"></i></a></li>
+          <li class="twitter"><a href="#"><i class="fa-brands fa-x-twitter"></i></a></li>
+        <li class="insta"><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
+        <li class="pin"><a href="https://youtube.com/playlist?list=PLPKm0BG9iYp0rajdNT32nmYlCrFmfrs00&si=HhrFdZGkwzF9oIee"><i class="fa-brands fa-youtube"></i></a></li>
+        <li class="vim"><a href="#"><i class="fa-brands fa-linkedin-in"></i></a></li>
+      </ul>
+    </div>
+  </div>
+    </div>
+  <button onclick="topFunction()" class="upbtn" id="mybtn"><i class='bx bxs-up-arrow'></i></button>
+  <nav>
+    <div class="navbar">
+      <i class='bx bx-menu'></i>
+      <div class="logo"><img src="/static/images/logo.png" alt="logo"height="70">
+        <div class="company">
+        <a href="{{url_for('index')}}">TANSAM</a>
+        <p>Powered by <span>SIEMENS</span></p>
+      </div>
+      </div>
+      <div class="nav-links">
+        <div class="sidebar-logo">
+          <span class="logo-name">Menu</span>
+          <i class='bx bx-x' ></i>
+        </div>
+        <ul class="links">
+          <li><a href="{{url_for('index')}}">HOME</a></li>
+          <li>
+            <a href="#">SERVICES</a>
+            <i class='bx bxs-chevron-down htmlcss-arrow arrow'></i>
+            <ul class="htmlCss-sub-menu sub-menu">
+              <li><a href="{{url_for('naanmudhalvan')}}">NAAN-MUDHALVAN</a></li>
+              <li><a href="{{url_for('productInnovation')}}">PRODUCT INNOVATION</a></li>
+              <li><a href="{{url_for('innovationManufacturing')}}">INNOVATIVE MANUFACTURING</a></li>
+              <li><a href="{{url_for('reverseEngineering')}}">REVERSE ENGINEERING</a></li>
+              <li><a href="{{url_for('digitaltwin')}}">DIGITAL TWIN ( Smart Factory ) </a></li>
+              <li><a href="{{url_for('iot')}}">IOT</a></li>
+              <li><a href="{{url_for('digitaltechnology')}}">DIGITAL TECHNOLOGY</a></li>
+              <li><a href="{{url_for('ar_vr')}}">AR/VR RESEARCH</a></li>
+              <li><a href="{{url_for('aisolution')}}">AI DEVELOPMENT</a></li>
+            </ul>
+          </li>
+              <!-- ======================= Services Section List end ============================= -->
+          <li>
+            <a href="#">EVENTS</a>
+            <i class='bx bxs-chevron-down htmlcss-arrow arrow'></i>
+            <ul class="htmlCss-sub-menu sub-menu">
+              <li><a href="{{url_for('hakathon_events')}}">HACKATHON</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="#">GALLERY</a>
+            <i class='bx bxs-chevron-down htmlcss-arrow arrow'></i>
+            <ul class="htmlCss-sub-menu sub-menu">
+              <li><a href="{{url_for('tansamgallery')}}">TANSAM Gallery</a></li>
+              <li><a href="{{url_for('hackathon')}}">HACKATHON Gallery</a></li>
+              <li><a href="#">Celebration Gallery</a></li>
+            </ul>
+          </li>  
+          <li><a href="{{url_for('aboutus')}}">ABOUT US</a></li>      
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <section class="home" id="home">
+    <div class="logos" data-aos="fade-up" data-aos-anchor-placement="center-bottom" data-aos-duration="2000">
+      <img src="/static/images/tnlogo.png" alt="logo" >
+      <img src="/static/images/logo.png" alt="logo">
+      <img src="/static/images/tidco.png" alt="logo">
+    </div>
+    <div class="content" data-aos="fade-up" data-aos-duration="3000" >
+      <h1>TANSAM</h1>
+      <h6>Tamil Nadu Smart and Advanced Manufacturing Centre</h6>
+      <p>Powered by <span class="">SIEMENS</span></p>
+      <a href="#main" class="btn">Get Started</a>
+    </div>
+  </section>
+</div>
+</div>
+<section>
+  <div class="video" id="main">
+    <div class="overview-video">
+      <video controls autoplay muted loop id="myVideo">
+        <source src="/static/images/Tansam Corporate Video.mp4" type="video/mp4">
+      </video>
+    </div>
+  </div>
+</section>
+<section>
+   <div class="blogs">
+  <div class="icons-container" id="main">
+     <div class="icons reveal">
+      <span class="outer"><span class="name">B</span>
+            <span class="name">L</span>
+            <span class="name">O</span>
+            <span class="name">G</span>
+            <span class="name">S</span>
+    </span>
+    <div class="swiper mySwiper">
+      <div class="swiper-wrapper">
+        {% if blog_posts|length != 0 %}
+          {% for blog in blog_posts %}
+          <div class="swiper-slide">
+          <div class="content">
+            <img src="{{ blog[0] }}" alt="Blog Image">
+              <h3>{{ blog[2] }}</h3>
+              <p>{{ read_file(blog[1])[:50] }} 
+                <a href="{{url_for('blogsDetails', value=blog[2])}}" class="">Read More...</a></p>
+          </div>
+        </div>
+        {% endfor %}
+      {% endif %}
+        </div>
+        </div>
+        <div class="swiper-pagination"></div>
+
+    </div>
+
+    <div class="icons reveal">
+      <span class="outer"><span class="name">N</span>
+            <span class="name">E</span>
+            <span class="name">w</span>
+            <span class="name">S</span>
+    </span>
+    <div class="swiper mySwiper">
+      <div class="swiper-wrapper">
+        {% if news_posts|length != 0 %}
+          {% for news in news_posts %}
+          <div class="swiper-slide">
+          <div class="content">
+            <img src="{{ news[0] }}" alt="Blog Image">
+              <h3>{{ news[2] }}</h3>
+              <p>{{ read_file(news[1])[:50] }} 
+                <a href="{{url_for('blogsDetails', value=news[2])}}" class="">Read More...</a></p>
+          </div>
+          </div>
+          {% endfor %}
+          {% endif %}
+        </div>
+        </div>
+        <div class="swiper-pagination"></div>
+    </div>
+
+    <div class="icons reveal">
+      <span class="outer">
+            <span class="name">T</span>
+            <span class="name">E</span>
+            <span class="name">S</span>
+            <span class="name">T</span>
+            <span class="name">S</span>
+      </span>
+    <div class="swiper mySwiper">
+      <div class="swiper-wrapper">
+        {% if testimony_posts|length != 0 %}
+          {% for test in testimony_posts %}
+          <div class="swiper-slide">
+          <div class="content">
+            <img src="{{ test[0] }}" alt="Blog Image">
+              <h3>{{ test[2] }}</h3>
+              <p>{{ read_file(test[1])[:50] }} 
+                <a href="{{ url_for('blogsDetails', value=test[2]) }}" class="">Read More...</a></p>
+          </div>
+          </div>
+          {% endfor %}
+          {% endif %}
+        </div>
+        </div>
+        <div class="swiper-pagination"></div>
+    </div>
+  </div>
+</section>
+
+  <!-- LAst ////// \\\\\\\\\\-->
+  
+<section class="overview">
+  <h2 class="headin reveal">TANSAM - An Overview</h2>
+  <div class="overview-container reveal">
+    <div class="overview-content">
+      <p>TANSAM is a joint initiative of the Government of Tamil Nadu and Siemens Industry Software India Pvt. Ltd. (SISW). The centre is set up at TIDEL Park, Chennai, with an investment of Rs. 104 crores. The centre is equipped with Industry 4.0 technologies and is aimed at providing skill development and consultancy services to the manufacturing sector in the state. The centre will also provide training to the faculty of engineering colleges and polytechnics to enhance their skills in the areas of design and manufacturing.</p>
+      <p>The revolution in modern Industrial systems is one of the most critical business and societal changes we’re experiencing. Urbanization, global environmental impacts, and government regulations are accelerating the demand for automation. Developing product with adequate range, capabilities, and multiple design variants is a great challenge. Achieving all this with the same (or lower) cost of ownership requires bringing innovations and engineering efficiency that has been unheard of in the industry - without risking safety, reliability, and quality.
+
+        We require a simulation and testing solution covering every aspect of Automation. This will not only enable companies to achieve a significant competitive advantage, ROI, and operational performance edge in developing electric vehicles but also empowers them to adapt and evolve in the fast- approaching era of new mobility.
+        
+        Siemens Partner and Siemens Digital Industry Software establish, operate, enable and handed over an Industry Centre of Excellence to Section 8 company formed by TIDCO i.e. TANSAM.
+
+        <p>"TANSAM Centre of Excellence" is utilized by industries for spurring innovation at the grass root level. This will be a future proof for the industries and career progression training needs in the emerging technologies and best practices in par with international standards. Additionally, the CoE will be an ideal R&D facility for industries, to adapt to future technologies with cost saving advantages unique to them. The program has three key components namely Innovation Platform, that enable industry to develop personalized smart products with validated performance, then the Infrastructure Platform that enhance industry capability to create product, process and performance twin and the Engineering Services that provide established industry with services to liquidate their day to day issues. </p>
+        <p>The TANSAM Centre of Excellence have seven specializations and establish in about 16700 square feet area at TIDEL Park Chennai, which includes: Product Innovation, Center for Predictive Engineering Analytics, Smart Factory Research, Center for Asset Performance Management (IoT) research, Research Center for Product Lifecycle Management, Innovative Manufacturing, AR/ VR /MR Research and Skill training
+
+          The Industry Center of Excellence will provide services to Start-ups and large Industrial Units on not for profit basis from the facilities created. Entrepreneurs can also use facilities (wherever spare capacity is available) for regular work on payment.
+          
+          The Industry Center of Excellence is the first of its kind in India and Siemens has built a facility in China before the proposed one in Tamil Nadu. This will provide services to Large Industrial Units on subscription or one-time basis, Entrepreneurs and incubators Start-ups are welcome to use the facilities especially for their new innovation and product development, which will be based on user charges based on not for profit basis from the facilities created. Service charges shall be fixed on no profit basis. Such proliferation of industries and R&D will bring more patents for Tamil Nadu, which will be an accelerating force for Industry growth with state of the art Technology applications.</p>
+      </div>
+    <!-- <div class="overview-video">
+      <video controls autoplay muted loop id="myVideo">
+        <source src="/static/images/video.mp4" type="video/mp4">
+      </video>
+    </div> -->
+    <!--
+</section>
+</div>
+<h2 class="headin reveal">Our Notable Personalities</h2>
+<section class="review" id="review">
+  <div class="box1 box">
+    <div class="content">
+      <div class="image">
+        <img src="https://i.postimg.cc/bryMmCQB/profile-image.jpg" alt="Profile Image">
+      </div>
+      <div class="level">
+        <p>MD</p>
+      </div>
+      <div class="text">
+        <p class="name">Dr. ARUMUGAM</p>
+        <p class="job_title"></p>
+        <p class="job_discription">Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam atque, ipsam a amet laboriosam eligendi.</p>
+      </div>
+      <div class="icons">
+        <a href="#"><i class="fa-brands fa-square-facebook"></i></a>
+        <a href="#"><i class="fa-brands fa-square-x-twitter"></i></a>
+        <a href="#"><i class="fa-brands fa-square-instagram"></i></a>
+        <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="box1 box">
+    <div class="content">
+      <div class="image">
+        <img src="https://i.postimg.cc/bryMmCQB/profile-image.jpg" alt="Profile Image">
+      </div>
+      <div class="level">
+        <p>CEO</p>
+      </div>
+      <div class="text">
+        <p class="name">Sukhpreet Singh</p>
+        <p class="job_title">BACKEND/ML DEVELOPER</p>
+        <p class="job_discription">Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam atque, ipsam a amet laboriosam eligendi.</p>
+      </div>
+      <div class="icons">
+        <a href="#"><i class="fa-brands fa-square-facebook"></i></a>
+        <a href="#"><i class="fa-brands fa-square-x-twitter"></i></a>
+        <a href="#"><i class="fa-brands fa-square-instagram"></i></a>
+        <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+      </div>
+    </div>
+  </div>
+  <div class="box1 box">
+    <div class="content">
+      <div class="image">
+        <img src="https://i.postimg.cc/bryMmCQB/profile-image.jpg" alt="Profile Image">
+      </div>
+      <div class="level">
+        <p>COO</p>
+      </div>
+      <div class="text">
+        <p class="name">HANNAH R</p>
+        <p class="job_title">Digital Lead</p>
+        <p class="job_discription">Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam atque, ipsam a amet laboriosam eligendi.</p>
+      </div>
+      <div class="icons">
+        <a href="#"><i class="fa-brands fa-square-facebook"></i></a>
+        <a href="#"><i class="fa-brands fa-square-x-twitter"></i></a>
+        <a href="#"><i class="fa-brands fa-square-instagram"></i></a>
+        <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+      </div>
+    </div>
+    </div> 
+    <div class="box1 box">
+      <div class="content">
+        <div class="image">
+          <img src="https://i.postimg.cc/bryMmCQB/profile-image.jpg" alt="Profile Image">
+        </div>
+        <div class="level">
+          <p>COO</p>
+        </div>
+        <div class="text">
+          <p class="name">JAYARAJ</p>
+          <p class="job_title">ALL ROUNDER</p>
+          <p class="job_discription">Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam atque, ipsam a amet laboriosam eligendi.</p>
+        </div>
+        <div class="icons">
+          <a href="#"><i class="fa-brands fa-square-facebook"></i></a>
+          <a href="#"><i class="fa-brands fa-square-x-twitter"></i></a>
+          <a href="#"><i class="fa-brands fa-square-instagram"></i></a>
+          <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+        </div>
+      </div> -->
+      </div>
+    </section>
+
+
+    <!-- <section class="contact" id="contact">
+      <h2 class="headin reveal">Contact Us</h2>
+      <div class="row reveal">
+        <form action="/" method="POST" class="reveal">
+          
+          <div class="input-box">
+            <div class="input-field field">
+              <input type="text" name="name" placeholder="Full Name" id="Name" class="box" autocomplete="off">
+            </div>
+            <div class="input-field field">
+              <input type="email" name="email" placeholder="Email Address" id="email" class="box" autocomplete="off">
+            </div>
+          </div>
+          <div class="input-box">
+            <div class="input-field field">
+              <input type="text" name="phone" placeholder="Phone Number" id="phone" class="box" autocomplete="off">
+            </div>
+            <div class="input-field field">
+              <input type="text" name="subject" placeholder="Subject" id="subject" class="box" autocomplete="off">
+            </div>
+          </div>
+          <div class="textarea-field field">
+            <textarea name="message" class="box" id="message" cols="30" rows="10" placeholder="Your kind message" autocomplete='off'></textarea> 
+          </div>
+          <button type="submit">Send Message</button>
+        </form>
+      </div>
+    </section> -->
+    
+<br>
+<!-- //////////////// Footer ////////////-->
+  <section class="footer">
+    <div class="box-container">
+        <div class="box reveal">
+            <h3>Quick Links</h3>
+            <a href="#home"><i class="fas fa-arrow-right"></i>Home</a>
+            <a href="{{url_for('quicklinks')}}"><i class="fas fa-arrow-right"></i>Services</a>
+            <a href="#contact"><i class="fas fa-arrow-right"></i>Scale Programs</a>
+            <a href="{{url_for('aboutus')}}"><i class="fas fa-arrow-right"></i>About Us</a>
+        </div>
+        <div class="box reveal">
+            <h3>Reach Us</h3>
+            <a href="#"><i class="fa-solid fa-phone-volume"></i>+91 96000 91359 & 98840 35145 </a>
+            <a href="#"><i class="fas fa-envelope"></i>info@tansam.org</a>
+            <a href="https://maps.app.goo.gl/EhRuHSQBzVtNLoaN9"><i class="fas fa-map-marker-alt"></i>Tamil Nadu Smart and Advanced Manufacturing Centre
+              6th Floor C Wing North, Tidel Park, Rajiv Gandhi Salai,
+              Taramani, Chennai-600113 , Tamil Nadu.</a>
+        </div>
+        <div class="box reveal">
+            <h3>Social Media</h3>
+            <a href="#"><i class="fa-brands fa-square-facebook"></i>Facebook</a>
+            <a href="https://twitter.com/TANSAM2022"><i class="fa-brands fa-square-x-twitter"></i>X</a>
+            <a href="#"><i class="fa-brands fa-square-instagram"></i>Instagram</a>
+            <a href="https://www.linkedin.com/company/tansam/"><i class="fa-brands fa-linkedin"></i>Linkedin</a>
+        </div>
+    </div>
+    <h1 class="credit">Copyright © 2024 TANSAM. All Rights Reserved.Created By <span>TANSAM IT DEPARTMENT</span>
+    <div id="login-btn">
+      <a href="{{url_for('adminLogin')}}" class="admin">Admin</a>
+    </div>
+  </section>
+  
+  <script src="/static/js/script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+  <script>
+    window.addEventListener('scroll',reveal);
+
+    function reveal(){
+      var reveals = document.querySelectorAll('.reveal');
+
+      for(i=0 ; i<reveals.length; i++)
+      {
+        var windowheight = window.innerHeight;
+        var revealtop = reveals[i].getBoundingClientRect().top;
+        var revealpoint = 150;
+
+        if(revealtop < windowheight - revealpoint)
+        {
+          reveals[i].classList.add('active');
+        }
+        else{
+          reveals[i].classList.remove('active');
+        }
+      }
+    }
+
+    var swiper = new Swiper(".mySwiper", {
+      loop: true,
+  grabCursor: true,
+  centeredSlides: true,
+  autoplay: {
+    delay: 1500,
+    disableOnInteraction: false,
+  },
+      pagination: {
+        el: ".swiper-pagination",
+        dynamicBullets: true,
+      },
+    });
+
+    let mybutton = document.getElementById("mybtn"); // Corrected ID
+
+// When the user scrolls down 20px from the top of the document, show the button
+window.onscroll = function () {
+  scrollFunction();
+};
+
+function scrollFunction() {
+  if (
+    document.body.scrollTop > 100 ||
+    document.documentElement.scrollTop > 100
+  ) {
+    mybutton.style.display = "block";
+  } else {
+    mybutton.style.display = "none";
+  }
+}
+
+// When the user clicks on the button, scroll to the top of the document
+function topFunction() {
+  document.body.scrollIntoView({behaviour:"smooth"})
+  document.body.scrollTop = 0; // For Safari
+  document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+}
+
+var swiper = new Swiper(".vehicles-slider", {
+  slidesPerView: 1,
+  spaceBetween: 20,
+  loop: true,
+  grabCursor: true,
+  centeredSlides: true,
+  speed: 800,
+  autoplay: {
+    delay: 1000,
+    disableOnInteraction: false,
+  },
+  pagination: {
+    el: ".swiper-pagination",
+    clickable: true,
+  },
+  breakpoints: {
+    0: {
+      slidesPerView: 2,
+    },
+    768: {
+      slidesPerView: 3,
+    },
+    991: {
+      slidesPerView: 4,
+    },
+  },
+});
+// NEWS FLOW
+  function animateNews() {
+    var container = document.getElementById('news-container');
+    var newsItems = container.getElementsByClassName('news-item');
+    var newsCount = newsItems.length;
+    var index = 0;
+
+    setInterval(function() {
+        // Hide current news item
+        newsItems[index].style.top = '-100%';
+
+        // Calculate index for next news item
+        index = (index + 1) % newsCount;
+
+        // Show next news item
+        newsItems[index].style.top = '0';
+    }, 3000); // Change this value to adjust the time interval between news transitions (in milliseconds)
+}
+
+// Call the animateNews function when the page is fully loaded
+        window.onload = animateNews;
+
+        //
+        document.addEventListener('DOMContentLoaded', function() {
+          var dropdown = document.getElementById('dropdown');
+          var content = document.getElementById('content');
+        
+          dropdown.addEventListener('change', function() {
+            // If the selected option is changed, hide the content first
+            content.classList.remove('active');
+            
+            // Set a timeout to reveal the content after 2 seconds
+            setTimeout(function() {
+              content.classList.add('active');
+            }, 2000); // 2000 milliseconds = 2 seconds
+          });
+        });
+        
+  </script>
+  <script>
+    AOS.init();
+  </script>
+</body>
+</html>

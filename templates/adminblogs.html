@@ -1,0 +1,319 @@
+<!DOCTYPE html>`
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/adminstyle.css">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+
+    <title>TANSAM ADMIN</title> 
+</head>
+<style>
+    table.center {
+            margin-left: auto;
+            margin-right: auto;
+            width: 70%; /* Make sure the table takes up full width */
+        }
+
+        th, td {
+            padding: 1em 1em;
+            text-align: center;
+        }
+
+        th {
+            background-color: #0b3cc1;
+            color: #fff;
+        }
+
+        td {
+            border-top: 1px solid var(--innertable-color);
+            color: var(--text-color);
+            background-color: #eef1fa;
+        }
+        th .addblogs{
+            border-top: none;
+            border-bottom: none;
+            background-color: #fff;
+
+        }
+
+        td a{
+            color: #0b3cc1;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .newaddress{
+    height: 100%;
+    width: 100%;
+    z-index: 1000;
+    background: rgba(255,255,255,.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.newaddress .add-content{
+    padding: 2em;
+    margin: 1em;
+    border-radius: .5rem;
+    box-shadow: var(--box-shadow);
+    background: #fff;
+    border: var(--border);
+    text-align: left;
+    width: 40rem; 
+}
+.add-content h3{
+    font-size: 2.5rem;
+    color: var(--orange);
+    text-transform: capitalize;   
+    padding-bottom: 1rem;
+}
+.add-content label{
+    font-size: 1.5rem;
+    color: var(--black);
+    text-transform: capitalize;   
+    padding-bottom: 1.5rem;
+    padding-left: 0.8rem;
+    font-weight: 600;
+
+}
+.add-content .box{
+    width: 100%;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: .5rem;
+    border: var(--border);
+    outline: none;
+    font-size: 1.5rem;
+    color: var(--black);
+    text-transform: capitalize;   
+}
+.blogdetails{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+    box-shadow: var(--box-shadow);
+    flex-direction: column;
+}
+.blogdetails form{
+    display: flex;
+    justify-content: center;
+    align-items: left;
+    flex-direction: column;
+
+}
+.blogdetails form input{
+    width: 100%;
+    padding: 0.4rem;
+    margin-bottom: 1rem;
+    border-radius: .5rem;
+    border: 1px solid #0b3cc1;
+    outline: none;
+    font-size: .8rem;
+    color: var(--black);
+    text-transform: capitalize;   
+}
+.blogdetails form textarea{
+    width: 100%;
+    padding: 0.4rem;
+    margin-bottom: 1rem;
+    border-radius: .5rem;
+    border: 1px solid #0b3cc1;
+    outline: none;
+    font-size: .8rem;
+    color: var(--black);
+    text-transform: capitalize;   
+}
+.blogdetails form label{
+    font-size: 1rem;
+    color: #0b3cc1;
+    text-transform: capitalize;   
+    padding-bottom: 1rem;
+    font-weight: 600;
+}
+.blogdetails form input[type="submit"]{
+    width: 100%;
+    padding: 0.4rem;
+    margin-bottom: 1rem;
+    border-radius: .5rem;
+    border: 1px solid #0b3cc1;
+    outline: none;
+    font-size: 1rem;
+    color: var(--black);
+    text-transform: capitalize;   
+    background-color: #0b3cc1;
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.flash-message {
+        width: 70%;
+        margin: 1em auto;
+        text-align: center;
+        padding: 1em;
+        border-radius: 0.5em;
+        background-color: #af4c4c; /* Green background */
+        color: white;
+    }
+
+</style>
+<body>
+    <nav>
+        <div class="logo-name">
+            <div class="logo-image">
+                <img src="/TANSAM/TANSAM WEBSITE/static/images/logo.png" alt="">
+            </div>
+
+            <span class="logo_name">TANSAM</span>
+        </div>
+
+        <div class="menu-items">
+            <ul class="nav-links">
+                <li><a href="{{url_for('admin')}}">
+                    <i class="uil uil-estate"></i>
+                    <span class="link-name">Home</span>
+                </a></li>
+                <li><a href="/adminPosts/blogs">
+                    <i class="uil uil-files-landscapes"></i>
+                    <span class="link-name">Blogs</span>
+                </a></li>
+                <li><a href="/adminPosts/news">
+                    <i class="uil uil-chart"></i>
+                    <span class="link-name">News</span>
+                </a></li>
+                <li><a href="/adminPosts/testimony">
+                    <i class="uil uil-comments"></i>
+                    <span class="link-name">Testimonials</span>
+                </a></li>
+                <li><a href="{{url_for('changePassword')}}">
+                    <i class="uil uil-comments"></i>
+                    <span class="link-name">Change Password</span>
+                </a></li>
+                <li><a href="{{url_for('index')}}">
+                    <i class="uil uil-signout"></i>
+                    <span class="link-name">Logout</span>
+                </a></li>
+            </ul>
+            
+            <ul class="logout-mode">
+                <li class="mode">
+                    <a href="#">
+                        <i class="uil uil-moon"></i>
+                    <span class="link-name">Dark Mode</span>
+                </a>
+
+                <div class="mode-toggle">
+                  <span class="switch"></span>
+                </div>
+            </li>
+            </ul>
+        </div>
+    </nav>
+
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <div class="flash-message">
+                {{ messages[0] }}
+            </div>
+        {% endif %}
+    {% endwith %}
+
+    <section class="dashboard">
+        <div class="top">
+            <i class="uil uil-bars sidebar-toggle"></i>
+
+            <div class="name">
+                TANSAM ADMIN PORTAL
+                <div class="subname">
+                    Tamil Nadu Smart and Advance Manufacturing Centre
+                </div>
+            </div>
+            <img id="image" src="/static/Images/logomain.png" alt="">
+        </div>
+
+        <div class="dash-content">
+            <div class="overview">
+                <div class="title">
+                    <i class="uil uil-files-landscapes"></i>
+                    <span class="text">{{type}}</span>
+                </div>
+                <table class="center">
+                    <thead>
+                        <tr>
+                            <th>{{type}} Title</th>
+                            <th>{{type}} Date</th>
+                            <th>{{type}} Author</th>
+                            <th>{{type}} Action</th>
+                        </tr>
+                        {% for res in result %}
+                        <tr>
+                            <td>{{res[1]}}</td>
+                            <td>{{res[0]}}</td>
+                            <td>{{res[2]}}</td>
+                            <td><a href="/delete/{{type}}/{{res[1]}}">Delete</a></td>
+                        </tr>
+                        {% endfor %}
+                    </thead>
+                </table>
+                <div class="title">
+                    <i class="uil uil-files-landscapes"></i>
+                    <span class="text">Add {{type}}</span>
+                </div>
+                <div class="blogdetails">
+                    
+                    <form action="/postDetails/{{type}}" method="post" enctype="multipart/form-data">
+                        <label for="{{type}}title">{{type}} Title</label>
+                        <input type="text" name="{{type}}title" id="{{type}}title" class="box">
+                        <label for="{{type}}date">{{type}} Date</label>
+                        <input type="date" name="{{type}}date" id="{{type}}date" class="box">
+                        <label for="{{type}}author">{{type}} Author</label>
+                        <input type="text" name="{{type}}author" id="{{type}}author" class="box">
+                        <label for="{{type}}image">{{type}} Image</label>
+                        <input type="file" name="{{type}}image" id="{{type}}image" class="box">
+                        <label for="{{type}}content">{{type}} Content</label>
+                        <textarea name="{{type}}content" id="{{type}}content" cols="30" rows="10" class="box"></textarea>
+                        <input type="submit" name="clicked"   value="Add {{type}}" class="box">
+                    </form>
+
+                </div>
+    </section>
+    <script>
+        const body = document.querySelector("body"),
+      modeToggle = body.querySelector(".mode-toggle");
+      sidebar = body.querySelector("nav");
+      sidebarToggle = body.querySelector(".sidebar-toggle");
+
+let getMode = localStorage.getItem("mode");
+if(getMode && getMode ==="dark"){
+    body.classList.toggle("dark");
+}
+
+let getStatus = localStorage.getItem("status");
+if(getStatus && getStatus ==="close"){
+    sidebar.classList.toggle("close");
+}
+
+modeToggle.addEventListener("click", () =>{
+    body.classList.toggle("dark");
+    if(body.classList.contains("dark")){
+        localStorage.setItem("mode", "dark");
+    }else{
+        localStorage.setItem("mode", "light");
+    }
+});
+
+sidebarToggle.addEventListener("click", () => {
+    sidebar.classList.toggle("close");
+    if(sidebar.classList.contains("close")){
+        localStorage.setItem("status", "close");
+    }else{
+        localStorage.setItem("status", "open");
+    }
+})+.9
+    </script>
+</body>
+</html>

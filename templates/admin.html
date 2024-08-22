@@ -1,0 +1,193 @@
+    <!DOCTYPE html>`
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/adminstyle.css">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+
+    <title>TANSAM ADMIN</title> 
+</head>
+<style>
+    .flash-message {
+        width: 70%;
+        margin: 1em auto;
+        text-align: center;
+        padding: 1em;
+        border-radius: 0.5em;
+        background-color: #4CAF50; /* Green background */
+        color: white;
+    }
+</style>
+<body>
+    <nav>
+        <div class="logo-name">
+            <div class="logo-image">
+                <img src="/TANSAM/TANSAM WEBSITE/static/images/logo.png" alt="">
+            </div>
+
+            <span class="logo_name">TANSAM</span>
+        </div>
+
+        <div class="menu-items">
+            <ul class="nav-links">
+                <li><a href="{{url_for('admin')}}">
+                    <i class="uil uil-estate"></i>
+                    <span class="link-name">Home</span>
+                </a></li>
+                <li><a href="/adminPosts/blogs">
+                    <i class="uil uil-files-landscapes"></i>
+                    <span class="link-name">Blogs</span>
+                </a></li>
+                <li><a href="/adminPosts/news">
+                    <i class="uil uil-chart"></i>
+                    <span class="link-name">News</span>
+                </a></li>
+                <li><a href="/adminPosts/testimony
+                ">
+                    <i class="uil uil-comments"></i>
+                    <span class="link-name">Testimonials</span>
+                </a></li>
+                <li><a href="{{url_for('changePassword')}}">
+                    <i class="uil uil-comments"></i>
+                    <span class="link-name">Change Password</span>
+                </a></li>
+                <li><a href="/index">
+                    <i class="uil uil-signout"></i>
+                    <span class="link-name">Logout</span>
+                </a></li>
+            </ul>
+            
+            <ul class="logout-mode">
+                <li class="mode">
+                    <a href="#">
+                        <i class="uil uil-moon"></i>
+                    <span class="link-name">Dark Mode</span>
+                </a>
+
+                <div class="mode-toggle">
+                  <span class="switch"></span>
+                </div>
+            </li>
+            </ul>
+        </div>
+    </nav>
+
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <div class="flash-message">
+                {{ messages[0] }}
+            </div>
+        {% endif %}
+    {% endwith %}
+
+    <section class="dashboard">
+        <div class="top">
+            <i class="uil uil-bars sidebar-toggle"></i>
+
+            <div class="name">
+                TANSAM ADMIN PORTAL
+                <div class="subname">
+                    Tamil Nadu Smart and Advance Manufacturing Centre
+                </div>
+            </div>
+            <img id="image" src="/static/Images/logomain.png" alt="">
+        </div>
+
+        <div class="dash-content">
+            <div class="overview">
+                <div class="title">
+                    <i class="uil uil-tachometer-fast-alt"></i>
+                    <span class="text">Dashboard</span>
+                </div>
+
+                <div class="boxes">
+                    <div class="box box1">
+                        <span class="text">Blogs Uploaded</span>
+                        <span class="number">{{blog_count | default(0)}}</span>
+                    </div>
+                    <div class="box box2">
+                        <span class="text">News Uploaded</span>
+                        <span class="number">{{news_count | default(0)}}</span>
+                    </div>
+                    <div class="box box3">
+                        <span class="text">Testimonials Uploaded</span>
+                        <span class="number">{{testimony_count | default(0)}}</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="activity">
+                <div class="title">
+                    <i class="uil uil-clock-three"></i>
+                    <span class="text">Recent Activity</span>
+                </div>
+                <div class="activity-data">
+                    
+                    <div class="data names">
+                        <span class="data-title">Content Name</span>
+                        {% for his in history %}
+                        <span class="data-list">{{his[0]}}</span>
+                        {% endfor %}
+                    </div>
+                    <div class="data joined">
+                        <span class="data-title">Uploaded Date</span>
+                        {% for his in history %}
+                        <span class="data-list">{{his[1]}}</span>
+                        {% endfor %}    
+                    </div>
+                    <div class="data type">
+                        <span class="data-title">Type</span>
+                        {% for his in history %}    
+                        <span class="data-list">{{his[2]}}</span>
+                        {% endfor %}
+                    </div>
+                    <div class="data status">
+                        <span class="data-title">Status</span>
+                        {% for his in history %}
+                        <span class="data-list">{{his[3]}}</span>
+                        {% endfor %}
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+    <script>
+        const body = document.querySelector("body"),
+      modeToggle = body.querySelector(".mode-toggle");
+      sidebar = body.querySelector("nav");
+      sidebarToggle = body.querySelector(".sidebar-toggle");
+
+let getMode = localStorage.getItem("mode");
+if(getMode && getMode ==="dark"){
+    body.classList.toggle("dark");
+}
+
+let getStatus = localStorage.getItem("status");
+if(getStatus && getStatus ==="close"){
+    sidebar.classList.toggle("close");
+}
+
+modeToggle.addEventListener("click", () =>{
+    body.classList.toggle("dark");
+    if(body.classList.contains("dark")){
+        localStorage.setItem("mode", "dark");
+    }else{
+        localStorage.setItem("mode", "light");
+    }
+});
+
+sidebarToggle.addEventListener("click", () => {
+    sidebar.classList.toggle("close");
+    if(sidebar.classList.contains("close")){
+        localStorage.setItem("status", "close");
+    }else{
+        localStorage.setItem("status", "open");
+    }
+})+.9
+    </script>
+</body>
+</html>

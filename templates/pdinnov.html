@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <title>TANSAM | Product Innovation</title>
+    <link rel="icon" type="image/png" href="/logo.png"/>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"/>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   </head>
+<body>
+  <div class="sticky-social">
+    <ul class="social">
+      <li class="fb"><a href="#"><i class="fa-brands fa-facebook"></i></a></li>
+          <li class="twitter"><a href="#"><i class="fa-brands fa-x-twitter"></i></a></li>
+        <li class="insta"><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
+        <li class="pin"><a href="#"><i class="fa-brands fa-youtube"></i></a></li>
+        <li class="vim"><a href="#"><i class="fa-brands fa-linkedin-in"></i></a></li>
+      </ul>
+    </div>
+  </div>
+    </div>
+  <button onclick="topFunction()" class="upbtn" id="mybtn"><i class='bx bxs-up-arrow'></i></button>
+  <nav>
+    <div class="navbar">
+      <i class='bx bx-menu'></i>
+      <div class="logo"><img src="/static/images/logo.png" alt="logo"height="70">
+        <div class="company">
+        <a href="{{url_for('index')}}">TANSAM</a>
+        <p>Powered by <span>SIEMENS</span></p>
+      </div>
+      </div>
+      <div class="nav-links">
+        <div class="sidebar-logo">
+          <span class="logo-name">Menu</span>
+          <i class='bx bx-x' ></i>
+        </div>
+        <ul class="links">
+          <li><a href="{{url_for('index')}}">HOME</a></li>
+          <li>
+            <a href="#">SERVICES</a>
+            <i class='bx bxs-chevron-down htmlcss-arrow arrow'></i>
+            <ul class="htmlCss-sub-menu sub-menu">
+              <li><a href="{{url_for('naanmudhalvan')}}">NAAN-MUDHALVAN</a></li>
+              <li><a href="{{url_for('productInnovation')}}">PRODUCT INNOVATION</a></li>
+              <li><a href="{{url_for('innovationManufacturing')}}">INNOVATIVE MANUFACTURING</a></li>
+              <li><a href="{{url_for('reverseEngineering')}}">REVERSE ENGINEERING</a></li>
+              <li><a href="{{url_for('digitaltwin')}}">DIGITAL TWIN ( Smart Factory ) </a></li>
+              <li><a href="{{url_for('iot')}}">IOT</a></li>
+              <li><a href="{{url_for('digitaltechnology')}}">DIGITAL TECHNOLOGY</a></li>
+              <li><a href="{{url_for('ar_vr')}}">AR/VR DEVELOPMENT</a></li>
+              <li><a href="{{url_for('aisolution')}}">AI DEVELOPMENT</a></li>
+            </ul>
+          </li>
+              <!-- ======================= Services Section List end ============================= -->
+              
+          <li>
+            <a href="#">EVENTS</a>
+            <i class='bx bxs-chevron-down htmlcss-arrow arrow'></i>
+            <ul class="htmlCss-sub-menu sub-menu">
+              <li><a href="{{url_for('hakathon_events')}}">HACKATHON</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="#">GALLERY</a>
+            <i class='bx bxs-chevron-down htmlcss-arrow arrow'></i>
+            <ul class="htmlCss-sub-menu sub-menu">
+              <li><a href="{{url_for('tansamgallery')}}">TANSAM Gallery</a></li>
+              <li><a href="{{url_for('hackathon')}}">HACKATHON Gallery</a></li>
+              <li><a href="#">Celebration Gallery</a></li>
+            </ul>
+          </li>  
+          <li><a href="{{url_for('aboutus')}}">ABOUT US</a></li>      
+        </ul>
+      </div>
+    </div>
+  </nav>
+  
+<br>
+<section class="blog-full">
+  <div class="bloglinks reveal">
+    <a href="{{url_for('index')}}">Home</a>
+    <i class='bx bx-chevron-right'></i>
+    <a href="{{url_for('quicklinks')}}">Services</a>
+    <i class='bx bx-chevron-right'></i>
+    <a href="{{url_for('productInnovation')}}">Product Innovation</a>
+  </div>
+  <div class="alldetails reveal">
+  <div class="blogheader">
+    <h1>Sparking Progress with Product Innovation</h1>
+    <div class="blogdet">
+    <div class="date">
+      
+    </div>
+    <div class="content">
+        <h3 class="subhead">Introduction : </h2>
+      <p>
+        Welcome to a world where creativity thrives and progress is the norm. At [Your Company Name], we 
+        are passionate about Product Innovation, the catalyst that drives businesses towards novel solutions 
+        and fresh opportunities.
+      </p>
+    </div>
+    <div class="content">
+        <h3 class="subhead">Section 1: What is Product Innovation ?</h2>
+      <p>
+        Product Innovation is the process of conceiving, developing, and introducing new or improved 
+        products to the market. It's about reimagining the way things work and creating solutions that 
+        captivate and inspire.
+      </p>
+    </div>
+    <div class="content">
+        <h3 class="subhead">Section 2: The Power of Product Innovation</h2>
+        <p>
+              <span>Product Innovation empowers businesses with:</span>
+              <br>
+              <table>
+              <tr>
+              <th>Competitive Edge:</th> <td> Stay ahead of the competition by offering unique and market-leading products.</td>
+              </tr>
+              <tr>
+              <th>Customer Satisfaction:</th> <td>Meet evolving customer needs and preferences with fresh, engaging products.</td>
+              </tr>
+              <tr>
+              <th>Growth:</th> <td> Drive business expansion by opening doors to new market segments.</td>
+              </tr>
+              <tr>
+              <th>Efficiency:</th> <td> Enhance operational efficiency through modernized products and processes.</td>
+              </tr>
+              <tr>
+              <th>Sustainability:</th> <td> Develop eco-friendly products that resonate with conscientious consumers.</td>
+            </table>
+        </p>
+      </div>
+      <div class="content">
+        <h3 class="subhead">Section 3: Industries We Serve</h2>
+        <p>
+            <span>Our expertise extends across various sectors, including but not limited to:</span>
+            <ul class="prodlist">
+            <li>Technology and Electronics</li>
+            <li>Healthcare and Medical Devices</li>
+            <li>Consumer Goods</li>
+            <li>Automotive and Transportation</li>
+            <li>Aerospace and Aviation</li>
+            <li>Manufacturing and Industrial Products</li>
+            </ul>
+        </p>
+      </div>
+      <div class="content">
+        <h3 class="subhead">Section 4: Why Choose TANSAM for Product Innovation</h2>
+        <p>
+            <span>Choose us for:</span>
+            <br>
+            <table>
+            <tr>
+            <th>Innovative Thinking:</th> <td>A team of creative thinkers dedicated to turning ideas into reality.</td>
+            </tr>
+            <tr>
+            <th> Market Insight:</th> <td>We understand market trends and consumer behavior.</td>
+            </tr>
+            <tr>
+            <th>Custom Solutions:</th> <td> Drive business expansion by opening doors to new market segments.</td>
+            </tr>
+            <tr>
+            <th>Quality Assurance:</th> <td>A commitment to excellence and the highest product standards.</td>
+            </tr>
+            <tr>
+            <th>Cost Effective Approaches:</th> <td> Efficiently utilizing resources to maximize your ROI.</td>
+            </table>
+        </p>
+      </div>
+      <div class="content">
+        <h3 class="subhead">Section 5: Get Started with TANSAM</h2>
+        <p>
+        
+            Ready to embark on a journey of innovation and growth? Contact us today to initiate your Product 
+Innovation journey with TANSAM.
+        </p>
+        <p>
+            At TANSAM we believe in the power of innovation to transform businesses. Product Innovation is the 
+gateway to a future filled with possibilities, and we are here to guide you. Embrace creativity, enhance 
+efficiency, and achieve unprecedented success with our expertise. Get in touch today to begin a 
+voyage into the world of innovation and advancement.
+        </p>
+      </div>
+    <!-- <div class="blogimage reveal">
+        <iframe width="90%" height="500px" allowFullScreen="true" allow="accelerometer; magnetometer; gyroscope" style="display:block; margin:20px auto; border:0 none; max-width:880px;border-radius:8px; box-shadow: 0 1px 1px rgba(0,0,0,0.11),0 2px 2px rgba(0,0,0,0.11),0 4px 4px rgba(0,0,0,0.11),0 6px 8px rgba(0,0,0,0.11),0 8px 16px rgba(0,0,0,0.11);" src="https://panoraven.com/en/embed/JcYSdioc81"></iframe>
+    </div> -->
+  </div>
+  </div>
+      
+
+        </div>
+        
+        
+
+    </div>
+  </div>
+  
+</section>
+  <!-- //////////////// Footer ////////////-->
+  <section class="footer">
+    <div class="box-container">
+        <div class="box reveal">
+            <h3>Quick Links</h3>
+            <a href="#home"><i class="fas fa-arrow-right"></i>Home</a>
+            <a href="{{url_for('quicklinks')}}"><i class="fas fa-arrow-right"></i>Services</a>
+            <a href="#contact"><i class="fas fa-arrow-right"></i>Scale Programs</a>
+            <a href="{{url_for('aboutus')}}"><i class="fas fa-arrow-right"></i>About Us</a>
+        </div>
+        <div class="box reveal">
+            <h3>Reach Us</h3>
+            <a href="#"><i class="fa-solid fa-phone-volume"></i>+91 96000 91359 & 98840 35145 </a>
+            <a href="#"><i class="fas fa-envelope"></i>info@tansam.org</a>
+            <a href="https://maps.app.goo.gl/EhRuHSQBzVtNLoaN9"><i class="fas fa-map-marker-alt"></i>Tamil Nadu Smart and Advanced Manufacturing Centre
+              6th Floor C Wing North, Tidel Park, Rajiv Gandhi Salai,
+              Taramani, Chennai-600113 , Tamil Nadu.</a>
+        </div>
+        <div class="box reveal">
+            <h3>Social Media</h3>
+            <a href="#"><i class="fa-brands fa-square-facebook"></i>Facebook</a>
+            <a href="#"><i class="fa-brands fa-square-x-twitter"></i>X</a>
+            <a href="#"><i class="fa-brands fa-square-instagram"></i>Instagram</a>
+            <a href="https://www.linkedin.com/company/tansam/"><i class="fa-brands fa-linkedin"></i>Linkedin</a>
+        </div>
+    </div>
+    <h1 class="credit">Copyright © 2024 TANSAM. All Rights Reserved.Created By <span>TANSAM IT DEPARTMENT</span>
+    <div id="login-btn">
+      <a href="{{url_for('adminLogin')}}" class="admin">Admin</a>
+    </div>
+  </section>
+  <script src="script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+  <script>
+    window.addEventListener('scroll',reveal);
+
+    function reveal(){
+      var reveals = document.querySelectorAll('.reveal');
+
+      for(i=0 ; i<reveals.length; i++)
+      {
+        var windowheight = window.innerHeight;
+        var revealtop = reveals[i].getBoundingClientRect().top;
+        var revealpoint = 150;
+
+        if(revealtop < windowheight - revealpoint)
+        {
+          reveals[i].classList.add('active');
+        }
+        else{
+          reveals[i].classList.remove('active');
+        }
+      }
+    }
+
+    var swiper = new Swiper(".mySwiper", {
+      loop: true,
+  grabCursor: true,
+  centeredSlides: true,
+  autoplay: {
+    delay: 1500,
+    disableOnInteraction: false,
+  },
+      pagination: {
+        el: ".swiper-pagination",
+        dynamicBullets: true,
+      },
+    });
+
+    let mybutton = document.getElementById("mybtn"); // Corrected ID
+
+// When the user scrolls down 20px from the top of the document, show the button
+window.onscroll = function () {
+  scrollFunction();
+};
+
+function scrollFunction() {
+  if (
+    document.body.scrollTop > 100 ||
+    document.documentElement.scrollTop > 100
+  ) {
+    mybutton.style.display = "block";
+  } else {
+    mybutton.style.display = "none";
+  }
+}
+
+// When the user clicks on the button, scroll to the top of the document
+function topFunction() {
+  document.body.scrollIntoView({behaviour:"smooth"})
+  document.body.scrollTop = 0; // For Safari
+  document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+}
+
+var swiper = new Swiper(".vehicles-slider", {
+  slidesPerView: 1,
+  spaceBetween: 20,
+  loop: true,
+  grabCursor: true,
+  centeredSlides: true,
+  speed: 800,
+  autoplay: {
+    delay: 1000,
+    disableOnInteraction: false,
+  },
+  pagination: {
+    el: ".swiper-pagination",
+    clickable: true,
+  },
+  breakpoints: {
+    0: {
+      slidesPerView: 2,
+    },
+    768: {
+      slidesPerView: 3,
+    },
+    991: {
+      slidesPerView: 4,
+    },
+  },
+});
+
+  </script>
+</body>
+</html>

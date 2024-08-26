@@ -1,8 +1,18 @@
-from flask import Flask,render_template,request,redirect,url_for,flash
+from flask import Flask,render_template,request,redirect,url_for,flash, jsonify
 import os
+from flask_mail import Mail, Message
 
 myKey = os.urandom(24)
-app = Flask(__name__)
+app = Flask(__name__, static_folder='static')
+app.config['MAIL_SERVER'] = "smtp.gmail.com"
+app.config['MAIL_PORT'] = 587
+app.config['MAIL_USE_TLS'] = True
+app.config['MAIL_USE_SSL'] = False
+app.config['MAIL_USERNAME'] = 'programmingraw@gmail.com'
+app.config['MAIL_DEFAULT_SENDER'] = 'programmingraw@gmail.com'
+app.config['MAIL_PASSWORD'] = 'fmha djmp neid tvcv'
+
+mail = Mail(app)
 app.secret_key=myKey
 
 adminID='Tansam'
@@ -308,6 +318,28 @@ def aboutus():
     return render_template("aboutus.html")
 #///////// ABOUT US END \\\\\\\\\
     
+#////////// ABOUT US Start /////////
+@app.route("/contactus", methods = ['GET', 'POST'])
+def contactus():
+    if request.method == 'POST':
+        name = request.form.get('name')
+        email = request.form.get('email')
+        message = request.form.get('message')
+        try:
+
+            msg = Message( subject=f"Mail from {name}",
+                body = f"Name: {name} \nE-Mail: {email}  \n\n\nMessage: {message}",
+                recipients=[email]
+            )
+            mail.send(msg)
+            return jsonify({'success': True})
+        except Exception as e:
+            print(e)
+            return jsonify({'success': False})
+    return render_template("contactus.html")
+
+
+
 @app.route("/adminLogin",methods=['GET'])
 def adminLogin():
     return render_template("login.html")

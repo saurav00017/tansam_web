@@ -329,7 +329,9 @@ def contactus():
 
             msg = Message( subject=f"Mail from {name}",
                 body = f"Name: {name} \nE-Mail: {email}  \n\n\nMessage: {message}",
-                recipients=['contact@tansam.org']
+                recipients=['contact@tansam.org','hannahr@tansam.org'],
+                reply_to=email,
+                bcc=['hannahr@tansam.org']
             )
             mail.send(msg)
             return jsonify({'success': True})

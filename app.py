@@ -4,13 +4,13 @@ from flask_mail import Mail, Message
 
 myKey = os.urandom(24)
 app = Flask(__name__, static_folder='static')
-app.config['MAIL_SERVER'] = "smtp.gmail.com"
-app.config['MAIL_PORT'] = 587
-app.config['MAIL_USE_TLS'] = True
-app.config['MAIL_USE_SSL'] = False
-app.config['MAIL_USERNAME'] = 'programmingraw@gmail.com'
-app.config['MAIL_DEFAULT_SENDER'] = 'programmingraw@gmail.com'
-app.config['MAIL_PASSWORD'] = 'fmha djmp neid tvcv'
+app.config['MAIL_SERVER'] = "smtp.hostinger.com"
+app.config['MAIL_PORT'] = 465
+app.config['MAIL_USE_TLS'] = False
+app.config['MAIL_USE_SSL'] = True
+app.config['MAIL_USERNAME'] = 'contact@tansam.org'
+app.config['MAIL_DEFAULT_SENDER'] = 'contact@tansam.org'
+app.config['MAIL_PASSWORD'] = 'Tansam@1234567'
 
 mail = Mail(app)
 app.secret_key=myKey
@@ -329,7 +329,7 @@ def contactus():
 
             msg = Message( subject=f"Mail from {name}",
                 body = f"Name: {name} \nE-Mail: {email}  \n\n\nMessage: {message}",
-                recipients=[email]
+                recipients=['contact@tansam.org']
             )
             mail.send(msg)
             return jsonify({'success': True})

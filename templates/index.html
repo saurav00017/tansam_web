@@ -31,86 +31,34 @@
       </div>
     </section>
 
-    <section>
+    <section class="mt-5">
+      <div class="text-center">
+        <h2 style="font-weight: bold; color: #343a40;">Three Key Platforms offered at TANSAM</h2>
+      </div>
       <div class="blogs">
      <div class="icons-container" id="main">
         <div class="icons reveal">
-         <span class="outer"><span class="name">B</span>
-               <span class="name">L</span>
-               <span class="name">O</span>
-               <span class="name">G</span>
-               <span class="name">S</span>
+          <span class="name" style="color: #009999; font-weight: bold; font-size: 25px;">Innovation</span>
        </span>
-       <div class="swiper mySwiper">
-         <div class="swiper-wrapper">
-           {% if blog_posts|length != 0 %}
-             {% for blog in blog_posts %}
-             <div class="swiper-slide">
              <div class="content">
-               <img src="{{ blog[0] }}" alt="Blog Image">
-                 <h3>{{ blog[2] }}</h3>
-                 <p>{{ read_file(blog[1])[:50] }} 
-                   <a href="{{url_for('blogsDetails', value=blog[2])}}" class="">Read More...</a></p>
+                 <p>To Enable industry to develop personalized smart products with validated performance, then </p>
              </div>
-           </div>
-           {% endfor %}
-         {% endif %}
-           </div>
-           </div>
-           <div class="swiper-pagination"></div>
-   
        </div>
    
        <div class="icons reveal">
-         <span class="outer"><span class="name">N</span>
-               <span class="name">E</span>
-               <span class="name">w</span>
-               <span class="name">S</span>
+          <span class="name" style="color: #009999; font-weight: bold; font-size: 25px;">Infrastructure</span>
        </span>
-       <div class="swiper mySwiper">
-         <div class="swiper-wrapper">
-           {% if news_posts|length != 0 %}
-             {% for news in news_posts %}
-             <div class="swiper-slide">
              <div class="content">
-               <img src="{{ news[0] }}" alt="Blog Image">
-                 <h3>{{ news[2] }}</h3>
-                 <p>{{ read_file(news[1])[:50] }} 
-                   <a href="{{url_for('blogsDetails', value=news[2])}}" class="">Read More...</a></p>
+                 <p>To enhance industry capability to create product, process and performance twin and </p>
              </div>
-             </div>
-             {% endfor %}
-             {% endif %}
-           </div>
-           </div>
-           <div class="swiper-pagination"></div>
        </div>
    
        <div class="icons reveal">
-         <span class="outer">
-               <span class="name">T</span>
-               <span class="name">E</span>
-               <span class="name">S</span>
-               <span class="name">T</span>
-               <span class="name">S</span>
+               <span class="name" style="color: #009999; font-weight: bold; font-size: 25px;">Training and Services</span>
          </span>
-       <div class="swiper mySwiper">
-         <div class="swiper-wrapper">
-           {% if testimony_posts|length != 0 %}
-             {% for test in testimony_posts %}
-             <div class="swiper-slide">
              <div class="content">
-               <img src="{{ test[0] }}" alt="Blog Image">
-                 <h3>{{ test[2] }}</h3>
-                 <p>{{ read_file(test[1])[:50] }} 
-                   <a href="{{ url_for('blogsDetails', value=test[2]) }}" class="">Read More...</a></p>
+                 <p>To provide established industry and students with training services to liquidate their day-to-day issues.</p>
              </div>
-             </div>
-             {% endfor %}
-             {% endif %}
-           </div>
-           </div>
-           <div class="swiper-pagination"></div>
        </div>
      </div>
    </section>

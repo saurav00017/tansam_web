@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+<br>
+<section class="blog-full">
+  <div class="bloglinks reveal">
+    <a href="{{url_for('index')}}">Home</a>
+    <i class='bx bx-chevron-right'></i>
+    <a href="blogsdetails.html">Download</a>
+  </div>
+  <div class="alldetails reveal">
+  <div class="blogheader">
+    <h1>Documents</h1>
+   
+    </div>
+  </div>
+  
+</section>
+<div class="container mt-5 mb-5">
+    <ul class="list-group">
+        {% for document in documents %}
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                <span>
+                    <i class="bx bx-download me-2"></i>{{ document.name }}
+                </span>
+                <a href="{{ document.file_url }}" class="btn btn-primary" download="{{ document.name }}">
+                    Download
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

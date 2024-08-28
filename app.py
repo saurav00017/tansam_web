@@ -317,7 +317,7 @@ def quicklinks():
 def aboutus():
     return render_template("aboutus.html")
 #///////// ABOUT US END \\\\\\\\\
-    
+
 #////////// ABOUT US Start /////////
 @app.route("/contactus", methods = ['GET', 'POST'])
 def contactus():
@@ -340,6 +340,14 @@ def contactus():
             return jsonify({'success': False})
     return render_template("contactus.html")
 
+@app.route("/downloads",methods=['GET'])
+def download():
+    documents = [
+        {"name": "Tansam Information Brochure 1", "file_url": "/static/brochures/Tansam Information Brochure 1.pdf"},
+        {"name": "TANSAM Information Brochure 2", "file_url": "/static/brochures/TANSAM Information Brochure 2.pdf"},
+        # Add more documents here
+    ]
+    return render_template('download.html', documents=documents)
 
 
 @app.route("/adminLogin",methods=['GET'])
@@ -644,6 +652,6 @@ def delete(Type,title):
 
 if __name__ == "__main__":
     try:
-        app.run(host='0.0.0.0', port = 5000)
+        app.run(host='0.0.0.0', port = 5000, debug=True)
     except:
         print("Error in running the app")

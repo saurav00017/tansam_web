@@ -164,6 +164,10 @@ nav .navbar .links li:hover .htmlCss-sub-menu,
 nav .navbar .links li:hover .js-sub-menu {
   display: block;
 }
+nav .navbar .links .htmlCss-sub-menu li:hover .more-sub-menu,
+nav .navbar .links li:hover .js-sub-menu {
+  display: block;
+}
 .navbar .links li .sub-menu li {
   padding: 0 22px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
@@ -366,7 +370,7 @@ nav .navbar .links li:hover .js-sub-menu {
   }
 
   .links li .sub-menu .more:hover .more-sub-menu {
-    display: none;
+    display: block;
   }
   /*nav .navbar .links li:hover .htmlCss-sub-menu,
   nav .navbar .links li:hover .js-sub-menu {

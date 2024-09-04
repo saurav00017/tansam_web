@@ -27,7 +27,7 @@
           box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
       }
   </style>
-    <link rel="stylesheet" href="/static/css/quicklink.css">
+    <!-- <link rel="stylesheet" href="/static/css/quicklink.css"> -->
     <link
       rel="stylesheet"
       href="{{ url_for('static', filename='css/style.css') }}"
@@ -93,61 +93,69 @@
       <i class="bx bxs-up-arrow"></i>
     </button>
     <header>
-        <nav>
-            <div class="navbar">
-              <i class='bx bx-menu'></i>
-              <div class="logo"><img src="/static/images/logo.png" alt="logo"height="70">
+      <nav>
+        <div class="navbar">
+            <i class='bx bx-menu'></i>
+            <div class="logo">
+                <img src="/static/images/logo.png" alt="logo" height="70">
                 <div class="company">
-                <a href="{{url_for('index')}}">TANSAM</a>
-                <p>Powered by <span>SIEMENS</span></p>
-              </div>
-              </div>
-              <div class="nav-links">
+                    <a href="{{url_for('index')}}">TANSAM</a>
+                    <p>Powered by <span>SIEMENS</span></p>
+                </div>
+            </div>
+            <div class="nav-links">
                 <div class="sidebar-logo">
-                  <span class="logo-name">Menu</span>
-                  <i class='bx bx-x' ></i>
+                    <span class="logo-name">Menu</span>
+                    <i class='bx bx-x'></i>
                 </div>
                 <ul class="links">
-                  <li><a href="{{url_for('index')}}">HOME</a></li>
-                  <li>
-                    <a href="#">SERVICES</a>
-                    <i class='bx bxs-chevron-down htmlcss-arrow arrow'></i>
-                    <ul class="htmlCss-sub-menu sub-menu">
-                      <li><a href="{{url_for('naanmudhalvan')}}">NAAN-MUDHALVAN</a></li>
-                      <li><a href="{{url_for('productInnovation')}}">PRODUCT INNOVATION</a></li>
-                      <li><a href="{{url_for('innovationManufacturing')}}">INNOVATIVE MANUFACTURING</a></li>
-                      <li><a href="{{url_for('reverseEngineering')}}">REVERSE ENGINEERING</a></li>
-                      <li><a href="{{url_for('digitaltwin')}}">DIGITAL TWIN ( Smart Factory ) </a></li>
-                      <li><a href="{{url_for('iot')}}">IOT</a></li>
-                      <li><a href="{{url_for('digitaltechnology')}}">DIGITAL TECHNOLOGY</a></li>
-                      <li><a href="{{url_for('ar_vr')}}">AR/VR RESEARCH</a></li>
-                      <li><a href="{{url_for('aisolution')}}">AI DEVELOPMENT</a></li>
-                    </ul>
-                  </li>
-                      <!-- ======================= Services Section List end ============================= -->
-                  <li>
-                    <a href="#">EVENTS</a>
-                    <i class='bx bxs-chevron-down htmlcss-arrow arrow'></i>
-                    <ul class="htmlCss-sub-menu sub-menu">
-                      <li><a href="{{url_for('hakathon_events')}}">HACKATHON</a></li>
-                    </ul>
-                  </li>
-                  <li>
-                    <a href="#">GALLERY</a>
-                    <i class='bx bxs-chevron-down htmlcss-arrow arrow'></i>
-                    <ul class="htmlCss-sub-menu sub-menu">
-                      <li><a href="{{url_for('tansamgallery')}}">TANSAM Gallery</a></li>
-                      <li><a href="{{url_for('hackathon')}}">HACKATHON Gallery</a></li>
-                      <li><a href="#">Celebration Gallery</a></li>
-                    </ul>
-                  </li>  
-                  <li><a href="{{url_for('download')}}">Download</a></li>  
-                  <li><a href="{{url_for('aboutus')}}">ABOUT US</a></li>  
-                  <li><a href="{{url_for('contactus')}}">CONTACT US</a></li>     
+                    <li><a href="{{url_for('index')}}">Home</a></li>
+                    <li>
+                        <a href="#">Solutions</a>
+                        <i class='bx bxs-chevron-down htmlcss-arrow arrow'></i>
+                        <ul class="htmlCss-sub-menu sub-menu">
+                            <li><a href="{{url_for('productInnovation')}}">Product Innovation</a></li>
+                            <li><a href="{{url_for('innovationManufacturing')}}">Innovative Manufacturing</a></li>
+                            <li><a href="{{url_for('reverseEngineering')}}">Reverse Engineering</a></li>
+                            <li><a href="{{url_for('digitaltwin')}}">Digital Twin (Smart Factory)</a></li>
+                            <li><a href="{{url_for('iot')}}">Industrial IoT</a></li>
+                            <li><a href="{{url_for('digitaltechnology')}}">Digital Technology</a></li>
+                            <li><a href="{{url_for('ar_vr')}}">Augmented Reality</a></li>
+                            <li><a href="{{url_for('aisolution')}}">AI & ML</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">Training</a>
+                        <i class='bx bxs-chevron-down htmlcss-arrow arrow'></i>
+                        <ul class="htmlCss-sub-menu sub-menu">
+                            <li><a href="{{url_for('naanmudhalvan')}}">Naan Mudhalvan</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">News and Media</a>
+                        <i class='bx bxs-chevron-down htmlcss-arrow arrow'></i>
+                        <ul class="htmlCss-sub-menu sub-menu">
+                            <li>
+                                <a href="#">Events<i class="fa-solid fa-angle-right" style="margin-left: 10px;"></i></a>
+                                <ul class="sub-menu more-sub-menu ">
+                                    <li><a href="{{url_for('hakathon_events')}}">Hackathon</a></li>
+                                    <li><a href="{{url_for('tansamgallery')}}">Center Visits</a></li>
+                                    <li><a href="{{url_for('hackathon')}}">Outreach Activities</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="{{url_for('social_media')}}">Social Media</a></li>
+                            <li><a href="">News and Articles</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="{{url_for('download')}}">Downloads</a></li>
+                    <li><a href="{{url_for('aboutus')}}">About Us</a></li>
+                    <li><a href="{{url_for('contactus')}}">Contact Us</a></li>
                 </ul>
-              </div>
             </div>
-          </nav>
+        </div>
+    </nav>
+    
+    
     </header>
       {% block content %}
       {% endblock %}
@@ -163,7 +171,7 @@
                 </div>
                 <div class="box reveal">
                     <h3>Reach Us</h3>
-                    <a href="#"><i class="fa-solid fa-phone-volume"></i>+91 96000 91359 & 98840 35145 </a>
+                    <a href="#"><i class="fa-solid fa-phone-volume"></i>+91 96000 91359 | 98840 35145 </a>
                     <a href="#"><i class="fas fa-envelope"></i>info@tansam.org</a>
                     <a href="https://maps.app.goo.gl/EhRuHSQBzVtNLoaN9"><i class="fas fa-map-marker-alt"></i>Tamil Nadu Smart and Advanced Manufacturing Centre
                       6th Floor C Wing North, Tidel Park, Rajiv Gandhi Salai,

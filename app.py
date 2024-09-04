@@ -349,6 +349,10 @@ def download():
     ]
     return render_template('download.html', documents=documents)
 
+@app.route("/socialmedia",methods=['GET'])
+def social_media():
+    return render_template('socialMedia.html')
+
 
 @app.route("/adminLogin",methods=['GET'])
 def adminLogin():

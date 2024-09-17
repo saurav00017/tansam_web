@@ -1,0 +1,407 @@
+{% extends 'base_cal.html' %}
+{% block content %}
+
+<style>
+    /* Reset some default styles */
+    body, h1, h2, h3, p, form {
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f9;
+        color: #333;
+        line-height: 1.6;
+        position: relative;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding-bottom: 30px;
+        background-color: #e2e1dc;
+    }
+
+    .container {
+        width: 60%;
+        margin: 0 auto;
+        padding: 20px;
+        padding-top: 100px;
+    }
+
+    /* Header styles */
+    h1, h2 {
+        color: #444;
+        margin-bottom: 20px;
+    }
+
+    /* Form styles */
+    form {
+        background: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
+
+    input[type="text"], input[type="date"], input[type="password"], textarea {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        margin-bottom: 10px;
+    }
+
+    button {
+        background: #45a049;
+        color: #fff;
+        border: none;
+        padding: 10px 15px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+    }
+
+    button:hover {
+        background: #007a7a;
+    }
+
+    :root {
+        --primary-clr: #009999;
+    }
+
+    /* Nice scrollbar */
+    ::-webkit-scrollbar {
+        width: 5px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: #f5f5f5;
+        border-radius: 50px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: var(--primary-clr);
+        border-radius: 50px;
+    }
+
+    /* Calendar container */
+    .calendar-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background: #fff;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 1200px;
+        margin: auto;
+        padding: 20px;
+    }
+
+    /* Calendar header */
+    .calendar-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        max-width: 800px;
+        margin-bottom: 20px;
+    }
+
+    .calendar-header h2 {
+        font-size: 1.5rem;
+        font-weight: 600;
+    }
+
+    .calendar-header button {
+        background-color: transparent;
+        border: none;
+        font-size: 1.5rem;
+        cursor: pointer;
+        color: var(--primary-clr);
+    }
+
+    .calendar-header button:hover {
+        color: #000;
+    }
+
+    /* Calendar grid */
+    .calendar-grid {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        gap: 1px;
+        background: var(--primary-clr);
+        width: 100%;
+    }
+
+    .calendar-day {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        background: #fff;
+        border: 1px solid #ddd;
+        position: relative;
+        padding: 5px;
+        box-sizing: border-box;
+        height: 210px;
+    }
+
+    /* Day name styles */
+    .day-name {
+        font-weight: bold;
+        background: var(--primary-clr);
+        color: #fff;
+        padding: 10px 0;
+        text-align: center;
+    }
+
+    /* General style for the day number */
+    .day-number {
+        position: relative;
+        font-weight: bold;
+        margin-bottom: 5px;
+        display: flex;
+        justify-content: center;
+    }
+
+    /* Style for today’s day number */
+    .day-number.today {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    /* Ensure events appear normally for today */
+    .day-number.today + .events-list {
+        margin-top: 5px;
+    }
+
+
+    /* Today styling */
+    .today {
+        font-weight: bold;
+        color: #fff;
+        background-color: var(--primary-clr);
+        border-radius: 50%;
+        padding: 5px;
+        display: inline-block;
+    }
+
+    /* Event styles */
+    .event {
+        background-color: var(--primary-clr);
+        color: #fff;
+        border-radius: 5px;
+        padding: 5px;
+        margin-top: 5px;
+        font-size: 0.75rem;
+        text-align: center;
+        cursor: pointer;
+    }
+
+    .event strong {
+        display: block;
+        font-weight: 600;
+    }
+
+    .event small {
+        display: block;
+        color: #e0e0e0;
+    }
+
+    /* Popup Styles */
+    .popup-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 1000;
+    }
+
+    .popup-content {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        max-width: 600px;
+        width: 90%;
+    }
+
+    .popup-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .popup-close {
+        cursor: pointer;
+        font-size: 1.5rem;
+        background: none;
+        border: none;
+        color: #009999;
+    }
+
+    .popup-close:hover {
+        color: #007a7a;
+    }
+    /* General style for events list */
+    .events-list {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        margin-top: 5px;
+    }
+    /* Event Title Styles */
+    .event-title {
+        cursor: pointer;
+        background-color: #009999;
+        color: white;
+        padding: 5px;
+        border-radius: 5px;
+        margin-top: 2px;
+        font-size: 0.75rem;
+        text-align: center;
+    }
+    /* Hide zero days */
+    .calendar-day.zero {
+        visibility: hidden;
+    }
+
+.event-title:hover {
+    background-color: #007a7a;
+}
+
+
+    /* Responsive Design */
+    @media screen and (max-width: 1000px) {
+        .calendar-container {
+            padding: 10px;
+        }
+
+        .calendar-day {
+            padding: 3px;
+        }
+    }
+
+    @media screen and (max-width: 500px) {
+        .calendar-day {
+            padding: 3px;
+        }
+
+        .day-number {
+            font-size: 0.8rem;
+        }
+
+        .event {
+            font-size: 0.65rem;
+        }
+    }
+    .empty-day {
+        background-color: white;
+        height: 100%;
+        width: 100%;
+    }
+    
+    
+</style>
+
+<div class="calendar-container">
+    <div class="calendar-header">
+        <button id="prevMonth"><i class="fa-solid fa-chevron-left"></i></button>
+        <h2 id="monthYear">{{ current_month }} {{ current_year }}</h2>
+        <button id="nextMonth"><i class="fa-solid fa-chevron-right"></i></button>
+    </div>
+    <div class="calendar-grid">
+        <!-- Day Names Row -->
+        <div class="day-name">Sun</div>
+        <div class="day-name">Mon</div>
+        <div class="day-name">Tue</div>
+        <div class="day-name">Wed</div>
+        <div class="day-name">Thu</div>
+        <div class="day-name">Fri</div>
+        <div class="day-name">Sat</div>
+
+        <!-- Calendar Days -->
+        {% for week in weeks %}
+            {% for day in week %}
+            <div class="calendar-day">
+                {% if day > 0 %}
+                    <div class="day-number {% if day == current_day %}today{% endif %}">
+                        {{ day }}  <!-- Display the current day number -->
+                    </div>
+                    <div class="events-list">
+                        {% for event in events %}
+                            {% if event.date.day == day %}
+                            <div class="event-title" 
+                                 data-title="{{ event.title }}" 
+                                 data-date="{{ event.date.strftime('%Y-%m-%d') }}" 
+                                 data-description="{{ event.description }}" 
+                                 onclick="showPopup(this)">
+                                {{ event.title }}
+                            </div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    <div class="empty-day"></div>  <!-- Just an empty box with a white background -->
+                {% endif %}
+            </div>                             
+            {% endfor %}
+        {% endfor %}
+    </div>
+</div>
+
+<!-- Popup Structure -->
+<div id="popup" class="popup-overlay">
+    <div id="popup-content" class="popup-content"></div>
+</div>
+
+
+<script>
+    function showPopup(event) {
+        const popup = document.getElementById('popup');
+        const popupContent = document.getElementById('popup-content');
+        popup.style.display = 'block';
+    
+        // Set event details in popup
+        const eventTitle = event.getAttribute('data-title');
+        const eventDate = event.getAttribute('data-date');
+        const eventDescription = event.getAttribute('data-description');
+        popupContent.innerHTML = `
+            <div class="popup-header">
+                <h3>${eventTitle}</h3>
+                <button class="popup-close" onclick="closePopup()">&times;</button>
+            </div>
+            <p><strong>Date:</strong> ${eventDate}</p>
+            <p>${eventDescription}</p>
+        `;
+    }
+    
+    function closePopup() {
+        document.getElementById('popup').style.display = 'none';
+    }
+    
+    
+    document.getElementById('prevMonth').addEventListener('click', function() {
+        window.location.href = "/calendar?month={{ previous_month }}&year={{ previous_year }}";
+    });
+
+    document.getElementById('nextMonth').addEventListener('click', function() {
+        window.location.href = "/calendar?month={{ next_month }}&year={{ next_year }}";
+    });
+</script>
+{% endblock %}

@@ -1,0 +1,321 @@
+/* Reset some default styles */
+body, h1, h2, h3, p, form {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    width: 60%;
+    margin: 0 auto;
+    padding: 20px;
+    padding-top:200px;
+    /* height: 70vh; */
+}
+
+/* Header styles */
+h1, h2 {
+    color: #444;
+    margin-bottom: 20px;
+}
+
+/* Form styles */
+form {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input[type="text"], input[type="date"], input[type="password"], textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+button {
+    background: #45a049;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background: #007a7a;
+}
+
+:root {
+    --primary-clr: #009999;
+}
+
+/* Global reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 30px;
+    background-color: #e2e1dc;
+}
+
+/* Nice scrollbar */
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f5f5f5;
+    border-radius: 50px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--primary-clr);
+    border-radius: 50px;
+}
+
+/* Calendar container */
+.calendar-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+}
+
+/* Calendar header */
+.calendar-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 800px;
+    margin-bottom: 20px;
+}
+
+.calendar-header h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.calendar-header button {
+    background-color: transparent;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--primary-clr);
+}
+
+.calendar-header button:hover {
+    color: #000;
+}
+
+/* Calendar table */
+.calendar {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.calendar thead {
+    background: var(--primary-clr);
+    color: #fff;
+}
+
+.calendar th {
+    padding: 10px;
+    text-align: center;
+}
+
+.calendar tbody {
+    background: #fff;
+}
+
+.calendar td {
+    width: 14.28%;
+    padding: 10px;
+    text-align: center;
+    vertical-align: top;
+}
+
+.day-number {
+    font-size: 1rem;
+    font-weight: 500;
+    margin-bottom: 5px;
+    height: 100px;
+    width: 100px;
+}
+
+.today {
+    font-weight: bold;
+    color: #fff;
+    background-color: var(--primary-clr);
+    border-radius: 50%;
+    padding: 5px;
+    display: inline-block;
+}
+
+.event {
+    background-color: var(--primary-clr);
+    color: #fff;
+    border-radius: 5px;
+    padding: 5px;
+    margin-top: 5px;
+    font-size: 0.75rem;
+}
+
+.event strong {
+    display: block;
+    font-weight: 600;
+}
+
+.event small {
+    display: block;
+    color: #e0e0e0;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 1000px) {
+    .calendar-container {
+        padding: 10px;
+    }
+
+    .calendar-header h2 {
+        font-size: 1.2rem;
+    }
+
+    .calendar th, .calendar td {
+        padding: 5px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .calendar-header h2 {
+        font-size: 1rem;
+    }
+
+    .calendar td {
+        padding: 3px;
+    }
+
+    .day-number {
+        font-size: 0.8rem;
+    }
+
+    .event {
+        font-size: 0.65rem;
+    }
+}
+
+/* Login and Admin Dashboard Styles */
+.login-form, .admin-form {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.login-form label, .admin-form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.login-form input, .admin-form input, .admin-form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+.login-form button, .admin-form button {
+    background: #45a049;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.login-form button:hover, .admin-form button:hover {
+    background: #007a7a;
+}
+
+
+/* Popup Styles */
+.popup-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+.popup-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    width: 90%;
+}
+
+.popup-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.popup-close {
+    cursor: pointer;
+    font-size: 1.5rem;
+    background: none;
+    border: none;
+    color: #009999;
+}
+
+.popup-close:hover {
+    color: #007a7a;
+}
+.loginform
+{
+    display: flex;
+    justify-content: center;
+}

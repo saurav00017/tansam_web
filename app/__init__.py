@@ -1,29 +1,20 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
-import os
 
-db = SQLAlchemy()
-login_manager = LoginManager()
+app = Flask(__name__)
+app.config['SECRET_KEY'] = 'your_secret_key'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///calendar.db'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-def create_app():
-    app = Flask(__name__, static_folder='../static', template_folder='../templates')
+db = SQLAlchemy(app)
+login_manager = LoginManager(app)
+login_manager.login_view = 'login'
 
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///calendar.db'
-    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-    app.secret_key = os.urandom(24)
+from app.models import User
 
-    db.init_app(app)
-    login_manager.init_app(app)
-    login_manager.login_view = 'login'
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.get(int(user_id))
 
-    with app.app_context():
-        from . import models  # Ensure models are imported
-        db.create_all()  # Create tables
-
-    # Define user loader for Flask-Login
-    @login_manager.user_loader
-    def load_user(user_id):
-        return models.User.query.get(int(user_id))
-    
-    return app
+from app import routes, models

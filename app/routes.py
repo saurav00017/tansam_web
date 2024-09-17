@@ -155,7 +155,7 @@ def login():
             login_user(user)
             next_page = request.args.get('next')
             print(f"Next page: {next_page}")
-            return redirect(next_page) if next_page else redirect(url_for('admin_dashboard'))
+            return render_template('admin_dashboard.html')
         else:
             print("Invalid credentials")
     return render_template('login_cal.html')

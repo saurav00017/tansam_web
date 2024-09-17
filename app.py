@@ -1,9 +1,16 @@
 from flask import Flask,render_template,request,redirect,url_for,flash, jsonify
 import os
 from flask_mail import Mail, Message
+from flask_login import login_required, login_user, logout_user, current_user
+from app.models import User, Event
+from app import create_app, db
+from datetime import datetime,timedelta
+from collections import defaultdict
+import calendar as cal
 
 myKey = os.urandom(24)
-app = Flask(__name__, static_folder='static')
+app = create_app()
+# app = Flask(__name__, static_folder='static')
 app.config['MAIL_SERVER'] = "smtp.hostinger.com"
 app.config['MAIL_PORT'] = 465
 app.config['MAIL_USE_TLS'] = False
@@ -38,27 +45,6 @@ app.config['UPLOAD_FOLDER3'] = UPLOAD_FOLDER3
 app.config['UPLOAD_FOLDER4'] = UPLOAD_FOLDER4
 app.config['UPLOAD_FOLDER5'] = UPLOAD_FOLDER5
 app.config['UPLOAD_FOLDER6'] = UPLOAD_FOLDER6
-
-#  for blog saving path
-
-#recent_blog_path = r"static\recent.txt"
-
-#print(f"Contents of {os.getcwd()}: {', '.join(os.listdir())}")
-
-# Define the absolute path for recent.txt
-recent_blog_path = os.path.join(app.root_path, 'static', 'recent.txt')
-
-# Check if the file exists before attempting to read it
-if not os.path.exists(recent_blog_path):
-    # Handle the case where the file does not exist
-    # You can create the file or handle the error accordingly
-    # For example:
-    flash("Error: recent.txt file does not exist.")
-else:
-    # Read the file
-    with open(recent_blog_path, 'r') as file:
-        lines = file.readlines()
-        # Process the file content as needed
 
 
 def get_unique_filename(title, file_extension, folder):
@@ -653,6 +639,133 @@ def delete(Type,title):
 
     flash("Post deleted successfully....")
     return redirect(url_for('adminPosts',Type=Type))
+
+# Admin urls
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    if request.method == 'POST':
+        username = request.form.get('username')
+        password = request.form.get('password')
+        user = User.query.filter_by(username=username).first()
+        if user and user.password == password:
+            login_user(user)
+            return redirect(url_for('admin_dashboard'))
+    return render_template('login_cal.html')
+
+@app.route('/logout')
+@login_required
+def logout():
+    logout_user()
+    return redirect(url_for('login'))
+
+@app.route('/admin_dashboard', methods=['GET', 'POST'])
+@login_required
+def admin_dashboard():
+    if request.method == 'POST':
+        title = request.form.get('title')
+        date_str = request.form.get('date')
+        description = request.form.get('description')
+        
+        # Convert string to date
+        try:
+            event_date = datetime.strptime(date_str, '%Y-%m-%d').date()
+        except ValueError:
+            return "Invalid date format. Please use YYYY-MM-DD."
+        
+        event = Event(title=title, date=event_date, description=description)
+        db.session.add(event)
+        db.session.commit()
+        
+    return render_template('admin_dashboard.html')
+
+
+@app.route('/edit_events', methods=['GET', 'POST'])
+@login_required
+def edit_events():
+    if request.method == 'POST':
+        month = request.form.get('month')
+        year = request.form.get('year')
+        start_date = datetime.strptime(f"{year}-{month}-01", '%Y-%m-%d')
+        end_date = (start_date + timedelta(days=31)).replace(day=1) - timedelta(days=1)
+        
+        events = Event.query.filter(Event.date >= start_date, Event.date <= end_date).all()
+        # Group events by date
+        grouped_events = defaultdict(list)
+        for event in events:
+            grouped_events[event.date].append(event)
+        
+        return render_template('edit_events.html', grouped_events=grouped_events, selected_month=month, selected_year=year, current_year=year, success_message=request.args.get('success_message'))
+
+    # Default to current month and year if GET request
+    current_month = datetime.now().strftime('%m')
+    current_year = datetime.now().year
+    start_date = datetime.strptime(f"{current_year}-{current_month}-01", '%Y-%m-%d')
+    end_date = (start_date + timedelta(days=31)).replace(day=1) - timedelta(days=1)
+    
+    events = Event.query.filter(Event.date >= start_date, Event.date <= end_date).all()
+    grouped_events = defaultdict(list)
+    for event in events:
+        grouped_events[event.date].append(event)
+
+    return render_template('edit_events.html', grouped_events=grouped_events, selected_month=current_month, selected_year=current_year, current_year=current_year)
+
+
+@app.route('/edit_event/<int:event_id>', methods=['GET', 'POST'])
+@login_required
+def edit_event(event_id):
+    event = Event.query.get_or_404(event_id)
+    if request.method == 'POST':
+        event.title = request.form.get('title')
+        event.date = datetime.strptime(request.form.get('date'), '%Y-%m-%d').date()
+        event.description = request.form.get('description')
+        db.session.commit()
+        return redirect(url_for('admin_dashboard', success_message='Event updated successfully!'))
+
+    return render_template('edit_event.html', event=event)
+
+
+@app.route('/calendar', methods=['GET', 'POST'])
+def calendar_view():
+    # Handle POST request for adding/updating events
+    if request.method == 'POST':
+        event_date_str = request.form.get('event_date')
+        event_title = request.form.get('event_title')
+        
+        if event_date_str and event_title:
+            event_date = datetime.strptime(event_date_str, '%Y-%m-%d').date()
+            new_event = Event(date=event_date, title=event_title)
+            db.session.add(new_event)
+            db.session.commit()
+            return redirect(url_for('calendar_view'))  # Redirect to avoid form resubmission
+
+    # Handle GET request to display calendar
+    year = int(request.args.get('year', datetime.now().year))
+    month = int(request.args.get('month', datetime.now().month))
+
+    today = datetime.now().day if month == datetime.now().month else None
+
+    # Get the month name
+    month_name = cal.month_name[month]
+
+    # Generate the calendar for the month
+    cal_instance = cal.Calendar(firstweekday=6)  # Sunday as the first day of the week
+    month_days = cal_instance.monthdayscalendar(year, month)
+
+    events = Event.query.filter(
+        db.extract('month', Event.date) == month,
+        db.extract('year', Event.date) == year
+    ).all()
+
+    return render_template(
+        'calendar.html', current_month=month_name, current_year=year,
+        weeks=month_days, events=events, current_day=today,
+        previous_month=(month - 1) or 12,
+        previous_year=year - 1 if month == 1 else year,
+        next_month=(month + 1) if month < 12 else 1,
+        next_year=year + 1 if month == 12 else year
+    )
+
 
 if __name__ == "__main__":
     try:

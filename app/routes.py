@@ -149,10 +149,17 @@ def login():
         username = request.form.get('username')
         password = request.form.get('password')
         user = User.query.filter_by(username=username).first()
+        print(f"Attempting login for {username}")
         if user and user.password == password:
+            print(f"User {username} authenticated")
             login_user(user)
-            return redirect(url_for('admin_dashboard'))
+            next_page = request.args.get('next')
+            print(f"Next page: {next_page}")
+            return redirect(next_page) if next_page else redirect(url_for('admin_dashboard'))
+        else:
+            print("Invalid credentials")
     return render_template('login_cal.html')
+
 
 @app.route('/logout')
 @login_required

@@ -142,22 +142,15 @@ def social_media():
 
 
 # Admin urls
-
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
         username = request.form.get('username')
         password = request.form.get('password')
         user = User.query.filter_by(username=username).first()
-        print(f"Attempting login for {username}")
         if user and user.password == password:
-            print(f"User {username} authenticated")
             login_user(user)
-            next_page = request.args.get('next')
-            print(f"Next page: {next_page}")
-            return render_template('admin_dashboard.html')
-        else:
-            print("Invalid credentials")
+            return redirect(url_for('admin_dashboard'))
     return render_template('login_cal.html')
 
 
@@ -219,6 +212,7 @@ def edit_events():
     return render_template('edit_events.html', grouped_events=grouped_events, selected_month=current_month, selected_year=current_year, current_year=current_year)
 
 
+
 @app.route('/edit_event/<int:event_id>', methods=['GET', 'POST'])
 @login_required
 def edit_event(event_id):
@@ -231,7 +225,6 @@ def edit_event(event_id):
         return redirect(url_for('admin_dashboard', success_message='Event updated successfully!'))
 
     return render_template('edit_event.html', event=event)
-
 
 @app.route('/calendar', methods=['GET', 'POST'])
 def calendar_view():
@@ -273,5 +266,3 @@ def calendar_view():
         next_month=(month + 1) if month < 12 else 1,
         next_year=year + 1 if month == 12 else year
     )
-
-

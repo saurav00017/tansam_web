@@ -31,5 +31,4 @@ from app.models import User
 def load_user(user_id):
     return User.query.get(int(user_id))
 
-# Import routes and models
 from app import routes, models

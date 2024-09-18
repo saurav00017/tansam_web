@@ -150,8 +150,16 @@ def login():
         user = User.query.filter_by(username=username).first()
         if user and user.password == password:
             login_user(user)
-            return redirect(url_for('admin_dashboard'))
+            
+            # Check for next parameter to redirect the user
+            next_page = request.args.get('next')
+            if next_page:
+                return redirect(next_page)
+            else:
+                return redirect(url_for('admin_dashboard'))
+
     return render_template('login_cal.html')
+
 
 
 @app.route('/logout')

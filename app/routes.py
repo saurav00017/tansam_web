@@ -271,9 +271,9 @@ def calendar_view():
 
 @app.route('/jobs')
 def jobs():
-    return redirect("https://www.tansam.org/employee_management/careers/")
+    return redirect("https://ems.tansam.org/employee_management/careers/")
 
 
 @app.route('/intern')
 def intern():
-    return redirect("https://www.tansam.org/employee_management/add_intern/")
+    return redirect("https://ems.tansam.org/employee_management/add_intern/")

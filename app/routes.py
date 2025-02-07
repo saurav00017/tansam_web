@@ -268,3 +268,12 @@ def calendar_view():
         next_month=(month + 1) if month < 12 else 1,
         next_year=year + 1 if month == 12 else year
     )
+
+@app.route('/jobs')
+def jobs():
+    return redirect("https://www.tansam.org/employee_management/careers/")
+
+
+@app.route('/intern')
+def intern():
+    return redirect("https://www.tansam.org/employee_management/add_intern/")
